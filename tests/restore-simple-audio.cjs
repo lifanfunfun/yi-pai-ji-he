@@ -1,0 +1,17 @@
+const fs=require('fs');const path='src/doodle/doodleAudioEngine.js';let source=fs.readFileSync(path,'utf8');
+const begin=source.indexOf('      // Individual corrective EQ');const end=source.indexOf('      this.harpSpaceSend=',begin);
+if(begin<0||end<begin)throw new Error('Cannot locate EQ block');
+source=source.slice(0,begin)+source.slice(end);
+const a=source.indexOf('      this.bassEQ=');const b=source.indexOf('      const makeVoice=',a);
+if(a<0||b<a)throw new Error('Cannot locate buses');
+source=source.slice(0,a)+`      this.bassBus=this.master;
+      this.progressiveDrums=new ProgressiveDrumEngine();
+      this.warmPercussion=new WarmPercussion(this.master);
+      this.leadBus=new Tone.Filter({frequency:6500,type:'lowpass',rolloff:-12}).connect(this.master);
+      this.harmonyBus=new Tone.Filter({frequency:2600,type:'lowpass',rolloff:-12});
+      this.harmonyPan=new Tone.Panner(-.16).connect(this.master);
+      this.harmonyBus.connect(this.harmonyPan);
+`+source.slice(b);
+source=source.replace('      this.mixMakeup=new Tone.Gain(1.2).connect(this.limiter);','      this.mixMakeup=new Tone.Gain(1).connect(this.limiter);');
+source=source.replace('        wet: 1,','        wet: 0.14,');
+fs.writeFileSync(path,source);

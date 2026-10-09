@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3840" height="2160" viewBox="0 0 1920 1080"><rect width="1920" height="1080" fill="#fffdf6"/>
+<defs><path id="ring" d="M-570 110C-605-105-460-310-150-364C133-430 450-296 529-85C645 154 449 324 185 353C-113 400-434 339-550 172"/></defs>
+<g transform="translate(960 540) rotate(-12)" fill="none" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+<use href="#ring" stroke="#3178cc"/><use href="#ring" transform="scale(.94)" stroke="#78a984"/>
+<use href="#ring" transform="scale(.88)" stroke="#8b72c2"/><use href="#ring" transform="scale(.82)" stroke="#3178cc"/>
+<use href="#ring" transform="scale(.76)" stroke="#eb7d68"/><use href="#ring" transform="scale(.70)" stroke="#78a984"/>
+<use href="#ring" transform="scale(.64)" stroke="#3178cc"/><use href="#ring" transform="scale(.58)" stroke="#8b72c2"/>
+<use href="#ring" transform="scale(.52)" stroke="#78a984"/><use href="#ring" transform="scale(.46)" stroke="#3178cc"/>
+<use href="#ring" transform="scale(.40)" stroke="#eb7d68"/><use href="#ring" transform="scale(.34)" stroke="#8b72c2"/>
+<use href="#ring" transform="scale(.28)" stroke="#3178cc"/><use href="#ring" transform="scale(.22)" stroke="#78a984"/>
+<use href="#ring" transform="scale(.16)" stroke="#3178cc"/><path d="M-75 29C-85-39 44-54 63 12C83 67-34 88-62 45" stroke="#8b72c2"/>
+</g></svg>

@@ -1,0 +1,18 @@
+[build]
+  command = "pnpm exec vite build --config vite.deploy.config.js"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+  PNPM_VERSION = "10.11.0"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

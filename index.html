@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>一拍即合｜多感官数字音乐玩具</title>
+    <meta name="description" content="一拍即合是一套把身体动作、空间连接、节奏组合与图像表达变成音乐的多感官数字音乐玩具。" />
+    <meta property="og:title" content="一拍即合｜多感官数字音乐玩具" />
+    <meta property="og:description" content="让动作、空间、节奏与图像成为音乐探索的入口。" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./dance.css" />
+  </head>
+  <body data-status="idle" data-active-tab="guide" data-play-mode="interactive" data-app-view="cover">
+    <section id="projectCover" class="project-cover" aria-label="一拍即合模块选择">
+      <header class="cover-brand">
+        <img class="cover-brand__logo" src="./assets/yi-pa-logo-original-clean.png" width="2040" height="1218" alt="一拍即合，多感官数字音乐玩具" />
+        <div class="cover-brand__line" aria-hidden="true"><i></i><b></b><i></i></div>
+        <h2>让交互成为玩教具的新语言</h2>
+      </header>
+
+      <div class="module-grid">
+        <button class="module-card module-card--blue" type="button" data-enter-mode="interactive" aria-label="进入舞：挥一挥">
+          <span class="module-card__icon" aria-hidden="true">
+            <svg viewBox="32 8 176 162" aria-hidden="true">
+              <path d="M127 157c-18-3-32-17-45-33L55 94c-9-8-4-21 5-20 6 1 18 10 31 20L65 65c-12-12-5-26 5-21 11 5 25 22 40 34L84 42c-11-15-3-25 8-18 12 9 27 26 38 40l-14-21c-8-15 3-23 12-14 11 14 20 32 32 46l14-14c9-10 19-7 15 5-9 22-6 46-13 66-7 18-28 29-49 25Z" />
+              <path d="M161 77c-14 5-27 19-27 44M149 28l8 25M162 25l7 24M55 115c4 8 9 13 17 17M47 125c4 8 10 13 18 17" />
+            </svg>
+          </span>
+          <span class="module-card__copy"><strong>舞</strong><b>挥一挥</b><small>身体动作</small></span>
+        </button>
+
+        <button class="module-card module-card--coral" type="button" data-enter-mode="lily" aria-label="进入漾：连一连">
+          <span class="module-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 96 96"><path d="M48 14c-4 7-10 12-10 18a10 10 0 0 0 20 0c0-6-6-11-10-18Z"/><ellipse cx="48" cy="59" rx="15" ry="6"/><path d="M28 48c-8 3-12 7-12 12 0 9 14 16 32 16s32-7 32-16c0-5-4-9-12-12M8 70c7 10 22 15 40 15s33-5 40-15"/></svg>
+          </span>
+          <span class="module-card__copy"><strong>漾</strong><b>连一连</b><small>空间连接</small></span>
+        </button>
+
+        <button class="module-card module-card--yellow" type="button" data-enter-mode="sequencer" aria-label="进入织：拼一拼">
+          <span class="module-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 96 96"><rect x="18" y="18" width="25" height="25" rx="7"/><rect x="53" y="18" width="25" height="25" rx="7"/><rect x="18" y="53" width="25" height="25" rx="7"/><rect x="53" y="53" width="25" height="25" rx="7"/><path d="M30 25v11M60 30h11M25 66h11M65 59v13"/></svg>
+          </span>
+          <span class="module-card__copy"><strong>织</strong><b>拼一拼</b><small>节奏组合</small></span>
+        </button>
+
+        <button class="module-card module-card--green" type="button" data-enter-mode="doodle" aria-label="进入绘：画一画">
+          <span class="module-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 96 96" class="rainbow-icon"><path stroke="#ef795c" stroke-width="8" d="M12 76C9 9 83 8 84 75"/><path stroke="#edb52e" stroke-width="8" d="M26 75c-2-48 46-50 44 0"/><path stroke="#639fc3" stroke-width="8" d="M40 75c-2-27 18-27 17 0"/></svg>
+          </span>
+          <span class="module-card__copy"><strong>绘</strong><b>画一画</b><small>图像表达</small></span>
+        </button>
+      </div>
+
+    </section>
+
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <button id="backToCoverButton" class="back-to-cover" type="button" aria-label="返回封面">←</button>
+          <h1>一拍即合</h1>
+          <p id="currentModuleLabel">舞 · 挥一挥 · 挥手有旋律</p>
+        </div>
+        <div class="topbar__actions">
+          <label class="mode-select">
+            <span>模式</span>
+            <select id="playModeSelect">
+              <option value="interactive">舞 · 挥一挥</option>
+              <option value="lily">漾 · 连一连</option>
+              <option value="sequencer">织 · 拼一拼</option>
+              <option value="doodle">绘 · 画一画</option>
+            </select>
+          </label>
+          <span class="status"><i></i><b id="status">待启动</b></span>
+          <button id="startButton" class="primary-button" type="button">启动</button>
+          <button id="downloadZipButton" class="primary-button" type="button" style="display:inline-flex; align-items:center; background:#0284c7; cursor:pointer;" title="下载完整项目源码ZIP包至本地">💾 导出源码ZIP</button>
+        </div>
+      </header>
+
+      <section class="workbench">
+        <div class="stage-shell">
+          <div id="stage" class="stage">
+            <video id="camera" playsinline muted></video>
+            <canvas id="overlay"></canvas>
+          </div>
+          <div class="readout-strip">
+            <span>物件 <b id="padsCount">0</b></span>
+            <span>手部 <b id="handsCount">0</b></span>
+            <span>触发信号 <b id="signal">0.000</b></span>
+          </div>
+          <div class="sequencer-card">
+            <div class="sequencer-card__title">
+              <strong>步进音序控制</strong>
+              <span>4 行 × 16 步 AR loop</span>
+            </div>
+            <button id="playSequencerButton" class="sequencer-play" type="button">播放</button>
+            <label class="sequencer-control">
+              <span>速度</span>
+              <input id="bpmInput" type="range" min="60" max="220" step="1" value="120" />
+              <b id="bpmValue">120</b>
+            </label>
+            <label class="sequencer-control">
+              <span>映射</span>
+              <select id="sequencerMappingMode">
+                <option value="row">按行固定音色</option>
+                <option value="color">按颜色决定音色</option>
+              </select>
+            </label>
+            <label class="sequencer-control">
+              <span>网格线</span>
+              <input id="gridLineWeightInput" type="range" min="1" max="6" step="0.5" value="1" />
+              <b id="gridLineWeightValue">1.0</b>
+            </label>
+          </div>
+          <div id="lilyControls" class="lily-card">
+            <div class="lily-card__title">
+              <strong>播放 / 设置</strong>
+              <span>物件池塘 · 旋律传播</span>
+            </div>
+            <div class="lily-actions">
+              <button id="lilyPlayButton" class="lily-play" type="button">播放</button>
+              <button id="lilySetSourceButton" type="button">设置起点</button>
+            </div>
+            <div class="lily-stats">
+              <span>节点 <b id="lilyNodeCount">0</b></span>
+              <span>起点 <b id="lilySourceStatus">未设</b></span>
+              <span><b id="lilyPlayStatus">待播放</b></span>
+            </div>
+            <label class="lily-control">
+              <span>玩法</span>
+              <select id="lilyMappingMode">
+                <option value="melody-instrument">单音色旋律</option>
+                <option value="color-ensemble">多音色组合</option>
+              </select>
+            </label>
+            <label class="lily-control">
+              <span>音阶</span>
+              <select id="lilyScaleSelect"></select>
+            </label>
+            <label class="lily-control">
+              <span>音色</span>
+              <select id="lilyInstrumentSelect"></select>
+            </label>
+            <label class="lily-control">
+              <span>间隔</span>
+              <input id="lilyIntervalInput" type="range" min="260" max="1400" step="20" value="700" />
+              <b id="lilyIntervalValue">700</b>
+            </label>
+            <label class="lily-control">
+              <span>连线</span>
+              <input id="lilyRangeInput" type="range" min="50" max="240" step="5" value="120" />
+              <b id="lilyRangeValue">120</b>
+            </label>
+            <label class="lily-control">
+              <span>扩散</span>
+              <input id="lilySpreadInput" type="range" min="50" max="360" step="10" value="180" />
+              <b id="lilySpreadValue">180</b>
+            </label>
+          </div>
+        </div>
+
+        <div id="doodleControls" class="doodle-demo-controls">
+          <h2>示范画作</h2>
+          <select id="doodlePresetSelect" aria-label="示范画作"><option value="scribble">飞翔涂鸦</option><option value="building">纸屋拼贴</option><option value="decorative">小羊装饰画</option><option value="tiedye">彩泥指纹</option></select>
+          <div class="doodle-preset-buttons">
+            <button type="button" data-art="scribble" title="飞翔涂鸦" aria-label="飞翔涂鸦"><svg viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path stroke="#3186ea" d="M9 28C5 15 16 7 29 8C44 5 57 15 55 31C59 46 46 57 32 57C17 58 6 44 9 28ZM12 17Q17 9 22 18Q24 8 30 16Q33 5 39 16Q46 8 50 20"/><path stroke="#3186ea" d="M18 29Q22 23 26 29M37 29Q42 23 46 29"/><path stroke="#ef9968" d="M21 39Q32 53 44 39M13 35L17 36M47 36L51 34"/></g></svg></button>
+            <button type="button" data-art="building" title="纸屋拼贴" aria-label="纸屋拼贴"><svg viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"><path stroke="#bb8b54" d="M6 29L18 15L30 28L29 54L7 53ZM13 54V40H22V53M12 31H18V36H12Z"/><path stroke="#3186ea" d="M31 24L43 10L58 25L56 54H33ZM41 54V39H49V54M38 26H44V32H38Z"/><path stroke="#bb8b54" d="M48 15V7H53V20"/></g></svg></button>
+            <button type="button" data-art="decorative" title="小羊装饰画" aria-label="小羊装饰画"><svg viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path stroke="#7d82c2" d="M13 25Q7 15 19 15Q24 6 32 15Q43 9 47 20Q55 23 48 34Q49 45 38 44Q29 52 23 43Q10 45 10 34Q4 29 13 25ZM18 43L17 55H23M35 45L36 55H42"/><path stroke="#ee8767" d="M40 24Q49 20 53 31Q58 45 47 46Q36 45 39 31ZM40 25L33 20M52 28L58 23M45 33L45 34M50 39L47 40"/></g></svg></button>
+            <button type="button" data-art="tiedye" title="彩泥指纹" aria-label="彩泥指纹"><svg viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke-width="2.6" stroke-linecap="round"><path stroke="#3186ea" d="M6 39C1 10 48 1 57 24C66 49 25 65 12 48"/><path stroke="#79b49a" d="M12 37C8 15 44 9 51 27C57 45 29 56 18 46"/><path stroke="#df9b40" d="M18 35C16 22 41 16 45 30C48 43 29 49 24 43"/><path stroke="#9a7fc8" d="M25 34C24 26 37 23 39 33C40 40 31 43 29 38"/></g></svg></button>
+          </div>
+          <label class="doodle-speed"><span>扫描速度</span><input id="doodleBpmInput" type="range" min="50" max="150" value="90"><b id="doodleBpmValue">90</b></label>
+          <label class="doodle-speed"><span>音量</span><input id="doodleVolumeInput" type="range" min="0" max="100" value="80" aria-label="音乐音量"><b id="doodleVolumeValue">80%</b></label>
+          <div class="doodle-source-buttons"><button id="doodleUploadButton" type="button">上传画作</button><button id="doodleDisplayModeButton" type="button" aria-pressed="false">横屏扫描模式</button></div>
+          <small id="doodleSaveStatus" role="status"></small>
+        </div>
+        <aside class="panel" aria-label="控制面板">
+          <div class="panel-tabs" role="tablist" aria-label="控制面板">
+            <button class="panel-tab is-active" data-tab="guide" type="button">指南</button>
+            <button class="panel-tab" data-tab="setup" type="button">设置</button>
+            <button class="panel-tab" data-tab="pads" type="button">物件</button>
+            <button class="panel-tab" data-tab="sound" type="button">Sound</button>
+            <button class="panel-tab" data-tab="gesture" type="button">Gesture</button>
+            <button class="panel-tab" data-tab="log" type="button">Log</button>
+          </div>
+
+          <section class="panel-page is-active" data-panel-page="guide">
+            <div class="panel-section guide-section">
+              <div class="section-title">
+                <span>快速开始</span>
+                <em>大象大提琴 · 实时演奏指南</em>
+              </div>
+              <ol class="guide-list">
+                <li>点击右上角“启动”，允许浏览器使用摄像头。</li>
+                <li>顶栏模式选择“实时演奏板块（大象大提琴）”。</li>
+                <li><strong>跟随曲目玩法：</strong>面对摄像头，在空中向左或向右自然挥动手臂（模仿大提琴拉弓）。每一次挥手或变向换弓，就会自动拉出当前曲目的下一个音符！挥动越快声音越洪亮，慢挥声音越柔和。</li>
+                <li><strong>自由演奏玩法：</strong>在右侧“设置”中切换至“自由演奏”，上下移动手腕控制音高，左右挥动发音与揉弦。</li>
+                <li><strong>鼠标/触控支持：</strong>如果暂时没有摄像头或在安静环境中，直接在舞台区域按住鼠标或触控左右拖动，也可拉响大提琴。</li>
+                <li>步进鼓机与 Lily Pad：在顶栏下拉菜单中可随时无缝切换回 AR 16 步进鼓机或 Lily Pad 物件池塘。</li>
+              </ol>
+            </div>
+
+            <div class="panel-section guide-section">
+              <div class="section-title">
+                <span>特色玩法说明</span>
+                <em>Viola the Bird 风格沉浸演奏</em>
+              </div>
+              <dl class="guide-terms">
+                <dt>手势换弓检测</dt>
+                <dd>追踪手臂/手腕水平位移。推弓（Up-bow）与拉弓（Down-bow）自然切换，富有弦乐呼吸感。</dd>
+                <dt>曲谱跑道 (Runway)</dt>
+                <dd>舞台上方实时显示当前发音字符、音高与后续音符卡片，辅助节奏掌握。</dd>
+                <dt>大提琴模拟音色</dt>
+                <dd>采用 Tone.js 双振荡器弦乐物理滤波合成，融合琴弦摩擦感与大音乐厅混响。</dd>
+                <dt>步进鼓机 & Lily Pad</dt>
+                <dd>顶部菜单随时切换，桌面上放置彩色小物件依然可以玩 16 步纸上鼓机或池塘莲花音序。</dd>
+              </dl>
+            </div>
+          </section>
+
+          <section class="panel-page" data-panel-page="setup">
+            <div class="panel-section cello-panel-section">
+              <div class="section-title">
+                <span>大提琴曲目与控制</span>
+                <em>后台设置</em>
+              </div>
+              <label class="field">
+                <span>后台演奏曲目</span>
+                <select id="celloSongSelect">
+                  <option value="0">《小星星》 Twinkle Twinkle Little Star (F大调真大提琴)</option>
+                  <option value="1">《欢乐颂》 Ode to Joy - 贝多芬 (F大调真大提琴)</option>
+                </select>
+              </label>
+              <div style="display:flex; gap:8px; margin-top:10px;">
+                <button id="btnResetSongFromPanel" class="wide-button" type="button" style="flex:1;">🔄 从头开始演奏</button>
+                <button id="btnUploadMousePicPanel" type="button" style="flex:1; padding:6px 10px; font-size:12px; border-radius:6px; border:1px solid #cbd5e1; background:#f8fafc; cursor:pointer;">🖼️ 载入本地PNG原图</button>
+              </div>
+              <label class="field" style="margin-top:10px;">
+                <span>玩法模式</span>
+                <select id="celloPlayModeSelect">
+                  <option value="guided">跟随曲目演奏（左右挥动自动推进曲谱）</option>
+                  <option value="free">自由演奏模式（按手部位置自由拉奏）</option>
+                </select>
+              </label>
+              <label class="range-row" style="margin-top:12px;">
+                <span>拉弓灵敏度</span>
+                <input id="celloSensitivity" type="range" min="0.4" max="2.5" step="0.1" value="1.2" />
+                <b id="celloSensitivityVal">1.2x</b>
+              </label>
+            </div>
+
+            <div class="panel-section">
+              <div class="section-title">
+                <span>摄像头</span>
+                <em>输入</em>
+              </div>
+              <label class="field">
+                <span>选择摄像头（本机 / 外置）</span>
+                <select id="cameraSelect"><option value="">系统默认摄像头</option></select>
+              </label>
+              <button id="refreshCamerasButton" type="button">刷新摄像头列表</button>
+              <button id="restartCameraButton" type="button">切换所选摄像头</button>
+              <p id="cameraHint" class="hint" role="status">插入外置 USB 摄像头后刷新列表。授权后会显示设备名称，选择后自动切换。</p>
+              <label class="toggle">
+                <input id="mirrorToggle" type="checkbox" />
+                <span>镜像</span>
+              </label>
+            </div>
+
+            <div class="panel-section">
+              <div class="section-title">
+                <span>区域与演奏</span>
+                <em>稳定区域</em>
+              </div>
+              <div class="button-grid">
+                <button id="roiButton" type="button">选择区域</button>
+                <button id="clearRoiButton" type="button">清除区域</button>
+              </div>
+              <button id="lockPadsButton" class="wide-button" type="button">进入演奏模式</button>
+              <p id="lockStatus" class="hint">调整模式：持续识别并校准物件区域。</p>
+            </div>
+
+            <div class="panel-section">
+              <div class="section-title">
+                <span>画面与检测</span>
+                <em>全局调节</em>
+              </div>
+              <label class="range-row">
+                <span>画面饱和</span>
+                <input id="sat" type="range" min="0.12" max="0.9" step="0.01" value="0.42" />
+                <b id="satValue">0.42</b>
+              </label>
+              <label class="range-row">
+                <span>画面亮度</span>
+                <input id="val" type="range" min="0.05" max="0.8" step="0.01" value="0.18" />
+                <b id="valValue">0.18</b>
+              </label>
+              <label class="range-row">
+                <span>最小面积</span>
+                <input id="area" type="range" min="8" max="900" step="4" value="36" />
+                <b id="areaValue">36</b>
+              </label>
+              <p class="hint">饱和与亮度会同时作用在摄像头预览和识别用画面上；数值越高，画面越鲜明或更亮。</p>
+            </div>
+          </section>
+
+          <section class="panel-page" data-panel-page="pads">
+            <div class="section-title">
+              <span>物件音色规则</span>
+              <button id="resetColorRules" type="button">重置</button>
+            </div>
+            <p id="samplingStatus" class="hint">取色：选择一个音色后按“从画面取色”，拖到物件亮色区域，松开后应用。</p>
+            <div id="padList" class="pad-list"></div>
+            <div id="padEditor" class="pad-editor"></div>
+          </section>
+
+          <section class="panel-page" data-panel-page="sound">
+            <div class="section-title">
+              <span>Sound Kit</span>
+              <em>Sample / Tone.js</em>
+            </div>
+            <div class="panel-section sample-library">
+              <div class="section-title">
+                <span>Sample Library</span>
+                <em>Folder import</em>
+              </div>
+              <div class="sample-drop sample-drop--library">
+                <input id="sampleLibraryInput" type="file" accept="audio/*" webkitdirectory directory multiple />
+                <label for="sampleLibraryInput">导入音色文件夹</label>
+                <span id="sampleLibraryStatus">未导入音色库；也可以在下方给单个音色上传 sample。</span>
+              </div>
+            </div>
+            <div id="soundList" class="sound-list"></div>
+            <div id="soundEditor" class="sound-editor"></div>
+          </section>
+
+          <section class="panel-page" data-panel-page="gesture">
+            <div class="section-title">
+              <span>Gesture Gate</span>
+              <em>抗抖与判定</em>
+            </div>
+            <div class="gesture-meter">
+              <div>
+                <span>signal</span>
+                <b id="gestureSignal">0.000</b>
+              </div>
+              <meter id="gestureMeter" min="0" max="0.08" value="0"></meter>
+              <small id="gestureReason">idle</small>
+            </div>
+            <label class="field trigger-mode">
+              <span>Trigger Mode</span>
+              <select id="triggerMode">
+                <option value="touch">Touch / 触碰停留</option>
+                <option value="tap">Tap / 敲击</option>
+              </select>
+            </label>
+            <label class="range-row">
+              <span>敲击阈值</span>
+              <input id="tap" type="range" min="0.004" max="0.08" step="0.001" value="0.024" />
+              <b id="tapValue">0.024</b>
+            </label>
+            <label class="range-row">
+              <span>噪声门</span>
+              <input id="noiseFloor" type="range" min="0" max="0.04" step="0.001" value="0.008" />
+              <b id="noiseFloorValue">0.008</b>
+            </label>
+            <label class="range-row">
+              <span>平滑</span>
+              <input id="smoothing" type="range" min="0.15" max="1" step="0.01" value="0.42" />
+              <b id="smoothingValue">0.42</b>
+            </label>
+            <label class="range-row">
+              <span>Dwell</span>
+              <input id="dwell" type="range" min="0" max="220" step="5" value="70" />
+              <b id="dwellValue">70</b>
+            </label>
+            <label class="range-row">
+              <span>Release</span>
+              <input id="release" type="range" min="0" max="0.03" step="0.001" value="0.006" />
+              <b id="releaseValue">0.006</b>
+            </label>
+            <label class="range-row">
+              <span>Z 权重</span>
+              <input id="zWeight" type="range" min="0" max="4" step="0.1" value="1" />
+              <b id="zWeightValue">1.0</b>
+            </label>
+            <label class="range-row">
+              <span>冷却时间</span>
+              <input id="cooldown" type="range" min="35" max="320" step="5" value="150" />
+              <b id="cooldownValue">150</b>
+            </label>
+          </section>
+
+          <section class="panel-page" data-panel-page="log">
+            <div class="section-title">
+              <span>Trigger Log</span>
+              <em>最近事件</em>
+            </div>
+            <ol id="eventLog"></ol>
+          </section>
+        </aside>
+      </section>
+    </main>
+
+    <canvas id="process" hidden></canvas>
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>
