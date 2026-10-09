@@ -6,7 +6,7 @@
 
 [打开一拍即合](https://yi-pai-ji-he.netlify.app/)
 
-当前网站通过 Netlify 发布包上线。GitHub 自动部署连接尚待完成仓库授权。
+网站已连接 GitHub 的 main 分支，通过 Netlify 自动构建发布。修改并测试后推送到 main，网站会更新，访问网址保持不变。
 
 ## 运行与构建
 

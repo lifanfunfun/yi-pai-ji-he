@@ -1,0 +1,5 @@
+{
+  "project": "yi-pai-ji-he",
+  "deployment": "github-netlify-ci",
+  "release": "autodeploy-v1"
+}
